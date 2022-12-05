@@ -1,0 +1,38 @@
+# open terminal
+super + Return
+  st
+
+# restart sxhkd
+super + r
+	pkill -USR1 --exact sxhkd
+
+# quit/restart bspwm
+super + ctrl + {q,r}
+	bspc {quit,wm --restart}
+
+# close/kill windows
+super + ctrl + {c,k}
+	bspc node --{close,kill}
+
+# set the window state
+super + {t,p,s,f}
+	bspc node --state {tiled,pseudo_tiled,floating,fullscreen}
+
+# focus/swap the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node --{focus,swap} {west,south,north,east}
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node --move {-10 0,0 10,0 -10,10 0}
+
+# move a floating window further away
+super + shift + {Left,Down,Up,Right}
+	bspc node --move {-50 0,0 50,0 -50,50 0}
+
+# switch between desktops
+super + {1-5}
+  bspc desktop --focus ^{1-5}
+
+super + shift + {1-5}
+  bspc node --to-desktop ^{1-5} --follow
